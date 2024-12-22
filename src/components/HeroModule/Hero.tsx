@@ -1,19 +1,11 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import styles from "./Hero.module.css";
-import ParticleBackground from "./ParticleBackground.js";
+import AnimateBackground_2 from "./AnimateBackground_2";
 
-import AnimateBackground from "./AnimateBackground.js";
-import AnimateBackground_2 from "./AnimateBackground_2.js";
-
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <div className={styles.container}>
-      {/* Use the component */}
-      <div>
-        <AnimateBackground_2 />
-      </div>
+      <AnimateBackground_2 />
       <div className={styles.heroBorder}>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>Advance Your Future</h1>
