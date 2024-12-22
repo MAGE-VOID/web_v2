@@ -1,8 +1,8 @@
 // src/app/documentation/page.tsx
 import React from "react";
 import styles from "./DocumentationPage.module.css";
-import Header from "./components/HeaderDocs/Header";
-import Footer from "./components/FooterDocs/Footer";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/HeaderModule/Header";
 
 export default function Page() {
   return (
@@ -20,6 +20,3 @@ export default function Page() {
     </div>
   );
 }
-
-
-

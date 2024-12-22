@@ -1,35 +1,46 @@
-.container {
-  overflow: hidden; /* Oculta cualquier cosa fuera de este contenedor */
-  width: 100%; /* Ocupa el ancho completo de su contenedor padre */
+/* Menu.module.css */
+
+/* Contenedor para manejar layout. 
+   "justify" no tiene por qué justificarse horizontalmente, 
+   pero mantiene la idea de agrupar icono+menú 
+   y ubicar la lógica de "clic fuera" con ref. */
+.justify {
+  position: relative; /* Para posicionar menudiv dentro */
 }
 
-.justify {
+/* Contenedor que puede ayudar a ocultar scrolls o espacios extra */
+.container {
   overflow: hidden;
+  width: 100%;
 }
-/* Estilos para el ícono del menú */
+
+/* Ícono de menú (hamburguesa) */
 .menuIcon {
   display: none;
   font-size: 30px;
   cursor: pointer;
   transition: transform 0.3s ease; /* Transición para animación de rotación */
+  color: #fff; /* Ejemplo: color blanco para el icono */
 }
 
-/* Media query para dispositivos pequeños */
+/* 
+     Mostramos el ícono en pantallas pequeñas 
+     y ocultamos el menú desktop 
+  */
 @media (max-width: 549px) {
   .menuIcon {
-    display: block; /* Muestra el botón en pantallas pequeñas */
+    display: block;
   }
 
   .menuIcon.active {
-    /* Clase 'active' para cuando el menú está abierto */
-    transform: rotate(90deg); /* Rota el ícono para formar una 'X' */
-    transition: transform 0.3s ease; /* Asegura que la transición esté definida */
+    transform: rotate(90deg); /* Rota el ícono para simular una "X" */
   }
 
+  /* Menú emergente */
   .menudiv {
     position: absolute;
-    top: 80px;
-    right: 0; /* Alineado al borde derecho */
+    top: 80px; /* Ajusta para que no tape el header */
+    right: 0; /* Desplazado a la derecha */
     width: 250px;
     padding: 15px;
     background-color: #111111;
@@ -38,18 +49,24 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    opacity: 0; /* Inicia invisible */
-    transform: translateY(-5%); /* Empieza fuera de la vista */
-    transition: transform 0.75s ease-in-out, opacity 0.2s 0.1s ease-in-out; /* Transiciones suavizadas con un delay */
+
+    /* Inicia oculto (fuera de vista) */
+    opacity: 0;
+    transform: translateY(-5%);
     pointer-events: none;
+
+    /* Transiciones suaves */
+    transition: transform 0.75s ease-in-out, opacity 0.2s 0.1s ease-in-out;
   }
 
+  /* Cuando el menú está abierto */
   .menudiv.show {
     opacity: 1;
-    transform: translateY(5%); /* Mueve el menú a su posición final */
+    transform: translateY(5%);
     pointer-events: auto;
   }
 
+  /* Estilos para los enlaces del menú móvil */
   .menu-link {
     background-color: rgba(255, 255, 255, 0.1);
     font-size: 15px;
@@ -67,9 +84,9 @@
   }
 }
 
-/* Ocultar texto cuando el ancho de la pantalla es mayor a 550px */
+/* En pantallas >= 550px, ocultamos estos enlaces móviles */
 @media (min-width: 550px) {
-  .menu-link {
-    display: none; /* Oculta los enlaces */
+  .menudiv {
+    display: none;
   }
 }
