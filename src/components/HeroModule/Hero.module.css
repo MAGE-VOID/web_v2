@@ -1,0 +1,82 @@
+/* Hero.module.css */
+.container {
+  position: relative;
+  width: 100%;
+  height: 50rem; /* Altura inicial para pantallas pequeñas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111111;
+  z-index: 0;
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 768px) {
+  /* Ajustado para tabletas */
+  .container {
+    height: 45rem; /* Menor altura para dispositivos de tamaño medio */
+  }
+  .title {
+    font-size: 3rem; /* Tamaño de fuente intermedio */
+  }
+  .subtitle {
+    font-size: 1.5rem; /* Tamaño de fuente intermedio */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Para laptops y desktops */
+  .container {
+    height: 40rem; /* Menor altura para grandes pantallas */
+  }
+  .title {
+    font-size: 5rem; /* Tamaño de fuente grande */
+  }
+  .subtitle {
+    font-size: 1.75rem; /* Tamaño de fuente más grande */
+  }
+}
+
+.heroBorder {
+  padding: 16px 32px;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  z-index: 3;
+}
+
+.textContainer {
+  max-width: 1025px;
+  margin: auto;
+  margin-top: -50px; /* Posicionamiento relativo ajustado */
+  z-index: 3;
+}
+
+.title {
+  font-size: 3rem; /* Más pequeño para móviles */
+  font-weight: bold;
+  color: transparent;
+  background: rgb(255, 255, 255);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  z-index: 3;
+  position: relative;
+  animation: glowingTitle 3s infinite;
+}
+
+.subtitle {
+  font-size: 1.2rem; /* Inicial para móviles */
+  color: gray;
+  z-index: 3;
+}
+
+@keyframes glowingTitle {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0); /* Sin sombra visible */
+  }
+  20% {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.15); /* Brillo ajustado para visibilidad */
+  }
+}

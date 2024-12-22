@@ -1,0 +1,160 @@
+/* Footer.module.css */
+.footerContainer {
+  background-color: #111111;
+  height: 100%;
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer {
+  width: 90%;
+  max-width: 87rem;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.upperSection {
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  font-size: 0.75rem;
+  color: #777777;
+  margin-top: 50px;
+  /*border: 1px solid #ffffff;*/
+}
+
+.lowerSection {
+  display: flex;
+  justify-content: center;
+  height: 50%;
+  font-size: 0.75rem;
+  color: #777777;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.line {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #111111 25%,
+    #777777 50%,
+    #111111 75%,
+    transparent
+  );
+  margin: 15px 0;
+}
+
+.info2 {
+  line-height: 1.6;
+  padding: 8px;
+}
+
+.info2 p {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.info2 strong {
+  color: #777777;
+}
+
+.part {
+  flex: 1;
+  padding: 10px;
+}
+
+/* Estilos para los títulos en las partes 2, 3 y 4 */
+.part h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+/* Estilos para los ítems de la lista en las partes 2, 3 y 4 */
+.part ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Estilos para los ítems de la lista en las partes 2, 3 y 4 */
+.part li {
+  position: relative;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  color: #777777;
+  padding-bottom: 2px;
+  transition: color 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.part li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 191, 255, 0.3);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.part li:hover::after {
+  transform: scaleX(1);
+}
+
+.part li:hover {
+  color: #00bfff;
+}
+
+/* src/app/components/Header/Header.module.css */
+.logo {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 480px) {
+  /* For mobile phones */
+  .logo {
+    max-width: 100px; /* Even smaller logo */
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .logo {
+    max-width: 120px;
+  }
+  .upperSection {
+    flex-direction: column;
+    height: auto;
+    margin-top: 20px;
+  }
+  .lowerSection {
+    margin-bottom: 20px;
+  }
+
+  .part {
+    margin-bottom: 5px;
+  }
+
+  .footer {
+    height: auto;
+  }
+
+  .footerContainer {
+    height: auto;
+  }
+}

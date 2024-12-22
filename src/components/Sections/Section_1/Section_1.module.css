@@ -1,0 +1,25 @@
+/* Section_1.module.css */
+.section_1 {
+  overflow: hidden;
+  width: 100%;
+  background: #111111;  /* Confirmar que este es el fondo deseado */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  transition: opacity 1s ease; /* Mover la transición aquí si se aplica siempre */
+}
+
+.bg {
+  background: #111111;
+}
+
+/* Section_1.module.css */
+
+@media (max-width: 360px) {
+  .imageGroupStyle {
+    width: 120px; 
+    height: 120px;
+  }
+}
