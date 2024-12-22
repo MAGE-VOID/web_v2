@@ -1,0 +1,14 @@
+/* src/app/documentation/DocumentationPage.module.css */
+
+.wrapper {
+    /* Hace que este contenedor abarque toda la ventana */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main {
+    /* Se expande para empujar el footer hacia el final */
+    flex: 1;
+  }
+  
