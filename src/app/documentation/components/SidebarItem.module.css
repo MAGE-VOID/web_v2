@@ -46,18 +46,16 @@
   background-color: #1a1a1a;
 }
 
-/* Flecha base */
-.icon {
+.arrowIcon {
   transition: transform 0.3s ease;
   color: #777777;
-  font-size: 0.9rem;
-  /* Por defecto: chevron pointing right => rotate(0deg) */
-  transform: rotate(0deg);
+  width: 1em;
+  height: 1em;
+  transform: rotate(0deg); /* Apunta a la derecha */
 }
 
-/* Al abrir submenú, gira 90° => apunta abajo */
 .iconOpen {
-  transform: rotate(90deg);
+  transform: rotate(90deg); /* Gira 90° -> apunta hacia abajo */
 }
 
 /* Contenedor del submenú */
