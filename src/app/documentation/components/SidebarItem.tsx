@@ -1,8 +1,7 @@
-// src/app/documentation/components/SidebarItem.tsx
-
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./SidebarItem.module.css";
 
 /** Estructura que describe un ítem (puede tener subItems o no) */
@@ -12,44 +11,61 @@ export interface SidebarItemProps {
   subItems?: SidebarItemProps[];
 }
 
-/**
- * SidebarItem:
- * - Muestra un link directo si no hay subItems
- * - Muestra un "button" + submenú colapsable si hay subItems
- */
 export default function SidebarItem({ item }: { item: SidebarItemProps }) {
   const { label, href, subItems } = item;
 
-  // Submenús abiertos por defecto
-  const [isOpen, setIsOpen] = useState(true);
+  // 1. Detectar ruta actual para marcar "active"
+  const pathname = usePathname();
 
-  // Para animar la altura
+  // 2. Nombre único para el submenú en localStorage (basado en label)
+  const localStorageKey = `sidebarOpen-${label}`;
+
+  // 3. Estado "isOpen" se inicializa leyendo de localStorage.
+  //    Si no existe, por defecto lo dejamos "false" o "true" como tú prefieras
+  const [isOpen, setIsOpen] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem(localStorageKey);
+      if (stored !== null) return stored === "true"; 
+    }
+    // Si no hay nada en localStorage, 
+    // escoge si quieres iniciar abierto (true) o cerrado (false).
+    return true;
+  });
+
+  // 4. Para animar la altura del contenedor
   const [menuHeight, setMenuHeight] = useState(0);
   const subMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (subMenuRef.current) {
-      if (isOpen) {
-        const scrollHeight = subMenuRef.current.scrollHeight;
-        setMenuHeight(scrollHeight);
-      } else {
-        setMenuHeight(0);
-      }
+      setMenuHeight(isOpen ? subMenuRef.current.scrollHeight : 0);
     }
-  }, [isOpen]);
 
+    // Guardar estado actual en localStorage
+    if (typeof window !== "undefined") {
+      localStorage.setItem(localStorageKey, isOpen.toString());
+    }
+  }, [isOpen, localStorageKey]);
+
+  // Caso: ítem sin submenú => link directo
   if (!subItems || subItems.length === 0) {
-    // Enlace directo
+    const isActive = pathname === (href || "#");
     return (
       <li className={styles.item}>
-        <Link href={href || "#"} className={styles.directLink}>
+        <Link
+          href={href || "#"}
+          className={`${styles.directLink} ${isActive ? styles.active : ""}`}
+        >
           {label}
         </Link>
       </li>
     );
   }
 
-  const toggleSubmenu = () => setIsOpen(!isOpen);
+  // Caso: ítem con submenú
+  const toggleSubmenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <li className={styles.item}>
@@ -66,11 +82,20 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
         ref={subMenuRef}
         style={{ height: `${menuHeight}px` }}
       >
-        {subItems.map((sub, idx) => (
-          <Link key={idx} href={sub.href || "#"} className={styles.subMenuLink}>
-            {sub.label}
-          </Link>
-        ))}
+        {subItems.map((sub, idx) => {
+          const isSubActive = pathname === (sub.href || "#");
+          return (
+            <Link
+              key={idx}
+              href={sub.href || "#"}
+              className={`${styles.subMenuLink} ${
+                isSubActive ? styles.active : ""
+              }`}
+            >
+              {sub.label}
+            </Link>
+          );
+        })}
       </div>
     </li>
   );
