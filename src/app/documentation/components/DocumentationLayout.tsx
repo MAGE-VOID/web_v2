@@ -1,4 +1,5 @@
 // src/app/documentation/components/DocumentationLayout.tsx
+"use client";
 
 import React from "react";
 import Footer from "../../../components/Footer/Footer";
