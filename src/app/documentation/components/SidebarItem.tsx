@@ -17,6 +17,7 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
   const [hasInteracted, setHasInteracted] = useState(false);
   const [menuHeight, setMenuHeight] = useState(0);
   const subMenuRef = useRef<HTMLDivElement>(null);
+
   const [isOpen, setIsOpen] = useState(() => {
     if (subItems && subItems.length > 0) {
       return subItems.some((sub) => pathname.startsWith(sub.href || ""));
@@ -24,11 +25,11 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
     return false;
   });
 
-    useLayoutEffect(() => {
-        if (subMenuRef.current) {
-            setMenuHeight(isOpen ? subMenuRef.current.scrollHeight : 0);
-        }
-    }, [isOpen]);
+  useLayoutEffect(() => {
+    if (subMenuRef.current) {
+      setMenuHeight(isOpen ? subMenuRef.current.scrollHeight : 0);
+    }
+  }, [isOpen]);
 
   const toggleSubmenu = () => {
     setIsOpen(!isOpen);
@@ -61,7 +62,7 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
         ref={subMenuRef}
         style={{
           height: `${menuHeight}px`,
-          overflow: "hidden", // Asegurar que el contenido se recorte
+          overflow: "hidden",
           transition: hasInteracted ? "height 0.3s ease-in-out" : "none",
         }}
       >
