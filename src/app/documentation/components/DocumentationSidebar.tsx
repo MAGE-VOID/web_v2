@@ -63,12 +63,20 @@ export default function DocumentationSidebar() {
     }));
   }
 
-  // Hasta que no hayamos cargado la info de localStorage, evitamos mostrar el menú
+  // Renderiza un sidebar "fantasma" mientras no cargamos la config
   if (isLoading) {
-    return null; 
-    // Opcional: podrías renderizar un loader en lugar de null
+    return (
+      <aside
+        className={styles.sidebar}
+        style={{
+          visibility: "hidden",  
+          pointerEvents: "none", 
+        }}
+      />
+    );
   }
 
+  // Una vez que isLoading es false, pintamos el sidebar real
   return (
     <aside className={styles.sidebar}>
       <nav className={styles.nav}>
