@@ -1,0 +1,41 @@
+/* src/app/documentation/components/DocumentationSidebar.module.css */
+
+.sidebar {
+    /* Ajusta el ancho del sidebar */
+    min-width: 220px;
+    max-width: 240px;
+    
+    /* Espaciado interno */
+    padding: 1rem;
+  
+    /* Si no quieres bordes ni color de fondo, usa transparent */
+    background-color: transparent;
+  }
+  
+  .nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav li a {
+    text-decoration: none;
+    color: inherit; /* heredar color de tu tema */
+    font-weight: 500;
+  }
+  
+  .nav li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsividad: oculta el sidebar en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  }
+  

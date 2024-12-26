@@ -4,17 +4,19 @@ import styles from "./DocumentationPage.module.css";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/HeaderModule/Header";
 
+// Importa tu nuevo sidebar
+import DocumentationSidebar from "./components/DocumentationSidebar";
+
 export default function Page() {
   return (
     <div className={styles.wrapper}>
       <Header />
-      
-      {/* Contenido principal dentro de "main" */}
-      <main className={styles.main}>
-        <h1>Documentación</h1>
-        <p>Contenido de ejemplo...</p>
-        {/* Resto del contenido */}
-      </main>
+
+      {/* Contenedor principal para sidebar + contenido */}
+      <div className={styles.mainContainer}>
+        {/* Sidebar a la izquierda */}
+        <DocumentationSidebar />
+      </div>
 
       <Footer />
     </div>
