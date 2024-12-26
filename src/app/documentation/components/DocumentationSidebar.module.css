@@ -1,41 +1,88 @@
-/* src/app/documentation/components/DocumentationSidebar.module.css */
-
+/* SIDEBAR BASE */
 .sidebar {
+    /* Dark mode background */
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+  
     /* Ajusta el ancho del sidebar */
-    min-width: 220px;
-    max-width: 240px;
-    
-    /* Espaciado interno */
+    min-width: 250px;
+    max-width: 280px;
+  
+    /* Padding interno */
     padding: 1rem;
   
-    /* Si no quieres bordes ni color de fondo, usa transparent */
-    background-color: transparent;
+    /* Para scrollbar si hay demasiados links */
+    overflow-y: auto;
   }
   
-  .nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .nav li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .nav li a {
-    text-decoration: none;
-    color: inherit; /* heredar color de tu tema */
-    font-weight: 500;
-  }
-  
-  .nav li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsividad: oculta el sidebar en pantallas pequeñas */
+  /* Ocultar en pantallas pequeñas */
   @media (max-width: 768px) {
     .sidebar {
       display: none;
     }
+  }
+  
+  /* NAVEGACIÓN */
+  .nav {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* LISTAS PRINCIPALES (SECCIONES) */
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* <details> en la lista principal */
+  .menu > li {
+    margin-bottom: 1rem;
+  }
+  
+  /* ESTILO DEL BOTÓN DE SECCIÓN (SUMMARY) */
+  .summary {
+    cursor: pointer;
+    display: block;
+    padding: 0.5rem;
+    font-weight: 600;
+    border-radius: 4px;
+    outline: none;
+    background: transparent;
+    color: #f5f5f5;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  /* Hover del summary */
+  .summary:hover {
+    background-color: #2f2f2f;
+  }
+  
+  /* SUBMENÚ */
+  .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 0.5rem 1rem; /* sangría para diferenciar sub-items */
+  }
+  
+  /* Submenú <li> */
+  .submenu li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* LINKS */
+  .submenu li a {
+    text-decoration: none;
+    color: #cfcfcf; /* un gris claro */
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  /* Hover en los links */
+  .submenu li a:hover {
+    color: #ffffff; /* más claro al hacer hover */
+    background-color: #333333; /* un poco más oscuro */
   }
   

@@ -12,10 +12,16 @@ export default function Page() {
     <div className={styles.wrapper}>
       <Header />
 
-      {/* Contenedor principal para sidebar + contenido */}
       <div className={styles.mainContainer}>
         {/* Sidebar a la izquierda */}
         <DocumentationSidebar />
+
+        {/* Área principal de contenido */}
+        <main className={styles.content}>
+          <h1>Documentación</h1>
+          <p>Contenido de ejemplo...</p>
+          {/* Más contenido */}
+        </main>
       </div>
 
       <Footer />
