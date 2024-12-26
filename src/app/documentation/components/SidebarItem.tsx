@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,6 +31,7 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
   }, [isOpen]);
 
   const toggleSubmenu = () => {
+    // Update isOpen based on user interaction
     setIsOpen(!isOpen);
     setHasInteracted(true);
   };
