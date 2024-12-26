@@ -1,30 +1,16 @@
 // src/app/documentation/page.tsx
 import React from "react";
-import styles from "./DocumentationPage.module.css";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/HeaderModule/Header";
+import DocumentationLayout from "./components/DocumentationLayout";
 
-// Importa tu nuevo sidebar
-import DocumentationSidebar from "./components/DocumentationSidebar";
-
-export default function Page() {
+export default function DocumentationMainPage() {
   return (
-    <div className={styles.wrapper}>
-      <Header />
-
-      <div className={styles.mainContainer}>
-        {/* Sidebar a la izquierda */}
-        <DocumentationSidebar />
-
-        {/* Área principal de contenido */}
-        <main className={styles.content}>
-          <h1>Documentación</h1>
-          <p>Contenido de ejemplo...</p>
-          {/* Más contenido */}
-        </main>
-      </div>
-
-      <Footer />
-    </div>
+    <DocumentationLayout>
+      <h1>Documentación - Página Principal</h1>
+      <p>
+        Bienvenido a la documentación general. Aquí encontrarás
+        una guía rápida, referencias y enlaces a otras secciones.
+      </p>
+      {/* Más contenido... */}
+    </DocumentationLayout>
   );
 }

@@ -1,78 +1,101 @@
+"use client"
 // src/app/documentation/components/DocumentationSidebar.tsx
-import React from "react";
-import Link from "next/link"; // Si usas Next.js
+import React, { useState } from "react";
+import Link from "next/link";
 import styles from "./DocumentationSidebar.module.css";
 
-const DocumentationSidebar = () => {
+/* 
+  SubMenu: componente reutilizable para cada 
+  grupo colapsable (ej. "Guide", "Themes", etc.) 
+*/
+function SubMenu({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSubmenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className={styles.collapseSection}>
+      {/* Encabezado (el "botón") */}
+      <div
+        className={`${styles.collapse__link} ${isOpen ? styles.rotate : ""}`}
+        onClick={toggleSubmenu}
+      >
+        <span className={styles.collapse__title}>{title}</span>
+        {/* Ejemplo de ícono con FontAwesome (o el que uses) */}
+        <i className={`fas fa-chevron-down ${styles.collapse__icon}`}></i>
+      </div>
+
+      {/* Contenedor del submenú (links) */}
+      <div
+        className={`${styles.collapse__menu} ${isOpen ? styles.showCollapse : ""}`}
+      >
+        {links.map((item, idx) => (
+          <Link
+            key={idx}
+            href={item.href}
+            className={styles.collapse__sublink}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function DocumentationSidebar() {
+  // Aquí podrías tener otros links directos
+  // o submenús de ejemplo
   return (
     <aside className={styles.sidebar}>
       <nav className={styles.nav}>
         <ul className={styles.menu}>
-          {/* Sección 1 */}
+          {/* Link directo sin submenú */}
           <li>
-            <details open>
-              <summary className={styles.summary}>Getting Started</summary>
-              <ul className={styles.submenu}>
-                <li>
-                  <Link href="/documentation/getting-started/intro">
-                    Introducción
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/documentation/getting-started/installation">
-                    Instalación
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/documentation/getting-started/quickstart">
-                    Quickstart
-                  </Link>
-                </li>
-              </ul>
-            </details>
+            <Link href="/documentation/introduction" className={styles.navLink}>
+              Introduction
+            </Link>
           </li>
 
-          {/* Sección 2 */}
+          {/* Ejemplo de SubMenu "Guide" */}
           <li>
-            <details>
-              <summary className={styles.summary}>Second Section</summary>
-              <ul className={styles.submenu}>
-                <li>
-                  <Link href="/documentation/second-section/overview">
-                    Overview
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/documentation/second-section/advanced">
-                    Advanced
-                  </Link>
-                </li>
-              </ul>
-            </details>
+            <SubMenu
+              title="Guide"
+              links={[
+                { label: "Getting Started", href: "/documentation/guide/getting-started" },
+                { label: "Advanced", href: "/documentation/guide/advanced" },
+              ]}
+            />
           </li>
 
-          {/* Sección 3 */}
+          {/* Otro submenú, "Themes" */}
           <li>
-            <details>
-              <summary className={styles.summary}>Third Section</summary>
-              <ul className={styles.submenu}>
-                <li>
-                  <Link href="/documentation/third-section/topic1">
-                    Topic 1
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/documentation/third-section/topic2">
-                    Topic 2
-                  </Link>
-                </li>
-              </ul>
-            </details>
+            <SubMenu
+              title="Themes"
+              links={[
+                { label: "Docs Theme", href: "/documentation/docs-theme" },
+                { label: "Blog Theme", href: "/documentation/blog-theme" },
+              ]}
+            />
+          </li>
+
+          {/* Sección More */}
+          <li className={styles.sectionHeading}>More</li>
+          <li>
+            <Link href="/documentation/about-nextra" className={styles.navLink}>
+              About Nextra
+            </Link>
           </li>
         </ul>
       </nav>
     </aside>
   );
-};
-
-export default DocumentationSidebar;
+}
