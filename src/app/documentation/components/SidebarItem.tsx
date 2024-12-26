@@ -1,10 +1,10 @@
+// src/app/documentation/components/SidebarItem.tsx
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./SidebarItem.module.css";
 
-/** Estructura que describe un ítem (puede tener subItems o no) */
 export interface SidebarItemProps {
   label: string;
   href?: string;
@@ -13,26 +13,19 @@ export interface SidebarItemProps {
 
 export default function SidebarItem({ item }: { item: SidebarItemProps }) {
   const { label, href, subItems } = item;
-
-  // 1. Detectar ruta actual para marcar "active"
   const pathname = usePathname();
 
-  // 2. Nombre único para el submenú en localStorage (basado en label)
   const localStorageKey = `sidebarOpen-${label}`;
 
-  // 3. Estado "isOpen" se inicializa leyendo de localStorage.
-  //    Si no existe, por defecto lo dejamos "false" o "true" como tú prefieras
+  // Lee de localStorage o inicia en 'true'
   const [isOpen, setIsOpen] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem(localStorageKey);
-      if (stored !== null) return stored === "true"; 
+      if (stored !== null) return stored === "true";
     }
-    // Si no hay nada en localStorage, 
-    // escoge si quieres iniciar abierto (true) o cerrado (false).
     return true;
   });
 
-  // 4. Para animar la altura del contenedor
   const [menuHeight, setMenuHeight] = useState(0);
   const subMenuRef = useRef<HTMLDivElement>(null);
 
@@ -40,14 +33,12 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
     if (subMenuRef.current) {
       setMenuHeight(isOpen ? subMenuRef.current.scrollHeight : 0);
     }
-
-    // Guardar estado actual en localStorage
     if (typeof window !== "undefined") {
       localStorage.setItem(localStorageKey, isOpen.toString());
     }
   }, [isOpen, localStorageKey]);
 
-  // Caso: ítem sin submenú => link directo
+  // Enlace directo (sin submenú)
   if (!subItems || subItems.length === 0) {
     const isActive = pathname === (href || "#");
     return (
@@ -62,10 +53,8 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
     );
   }
 
-  // Caso: ítem con submenú
-  const toggleSubmenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // Con submenú
+  const toggleSubmenu = () => setIsOpen(!isOpen);
 
   return (
     <li className={styles.item}>
@@ -74,7 +63,12 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
         onClick={toggleSubmenu}
       >
         <span>{label}</span>
-        <i className={`fas fa-chevron-down ${styles.icon}`}></i>
+        {/* Flecha: chevron-right por defecto */}
+        <i
+          className={`fas fa-chevron-right ${styles.icon} ${
+            isOpen ? styles.iconOpen : ""
+          }`}
+        ></i>
       </div>
 
       <div
