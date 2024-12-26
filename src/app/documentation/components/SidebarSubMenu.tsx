@@ -2,37 +2,49 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./SidebarItem.module.css";
-import type { SidebarItemProps } from "./SidebarItem";
+import { SidebarItemProps } from "./SidebarItem";
 
 interface SidebarSubMenuProps {
   label: string;
   subItems: SidebarItemProps[];
+  isOpen: boolean;       // Estado controlado desde el padre
+  onToggle: () => void;  // Función del padre para togglear
 }
 
-export default function SidebarSubMenu({ label, subItems }: SidebarSubMenuProps) {
+export default function SidebarSubMenu({
+  label,
+  subItems,
+  isOpen,
+  onToggle,
+}: SidebarSubMenuProps) {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [menuHeight, setMenuHeight] = useState(0);
   const subMenuRef = useRef<HTMLDivElement>(null);
 
-  const toggleSubmenu = () => {
-    setIsOpen((prev) => !prev);
-    setHasInteracted(true); // Activa la animación a partir del primer clic
-  };
+  // Solo para evitar animación en el primer render
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  // Ajustar la altura del contenedor cuando cambia `isOpen`
+  // Control de la altura para la animación
   useLayoutEffect(() => {
     if (subMenuRef.current) {
-      setMenuHeight(isOpen ? subMenuRef.current.scrollHeight : 0);
+      subMenuRef.current.style.height = isOpen
+        ? `${subMenuRef.current.scrollHeight}px`
+        : "0px";
     }
   }, [isOpen]);
+
+  function handleHeaderClick() {
+    onToggle(); 
+    if (!hasInteracted) {
+      setHasInteracted(true);
+    }
+  }
 
   const arrowClass = isOpen ? styles.iconOpen : "";
 
   return (
     <>
-      <div className={styles.collapseHeader} onClick={toggleSubmenu}>
+      {/* Cabecera con flecha */}
+      <div className={styles.collapseHeader} onClick={handleHeaderClick}>
         <span>{label}</span>
         <svg
           className={`${styles.arrowIcon} ${arrowClass}`}
@@ -50,26 +62,27 @@ export default function SidebarSubMenu({ label, subItems }: SidebarSubMenuProps)
           />
         </svg>
       </div>
+
+      {/* Contenedor del submenú con animación de altura */}
       <div
         className={styles.subMenuContainer}
         ref={subMenuRef}
         style={{
-          height: `${menuHeight}px`,
           overflow: "hidden",
           transition: hasInteracted ? "height 0.3s ease-in-out" : "none",
         }}
       >
-        {subItems.map((subItem, idx) => {
-          const isSubActive = pathname === (subItem.href || "#");
+        {subItems.map((sub, idx) => {
+          const isSubActive = pathname === (sub.href || "#");
           return (
             <Link
               key={idx}
-              href={subItem.href || "#"}
+              href={sub.href || "#"}
               className={`${styles.subMenuLink} ${
                 isSubActive ? styles.active : ""
               }`}
             >
-              {subItem.label}
+              {sub.label}
             </Link>
           );
         })}

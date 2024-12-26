@@ -9,10 +9,20 @@ export interface SidebarItemProps {
   subItems?: SidebarItemProps[];
 }
 
-export default function SidebarItem({ item }: { item: SidebarItemProps }) {
+interface SidebarItemControlledProps {
+  item: SidebarItemProps;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+export default function SidebarItem({
+  item,
+  isOpen,
+  onToggle,
+}: SidebarItemControlledProps) {
   const { label, href, subItems } = item;
 
-  // Si NO tiene subItems, renderiza un link directo
+  // Si NO tiene subItems, es un link simple
   if (!subItems || subItems.length === 0) {
     return (
       <li className={styles.item}>
@@ -21,10 +31,15 @@ export default function SidebarItem({ item }: { item: SidebarItemProps }) {
     );
   }
 
-  // Caso contrario, renderiza un submenú
+  // De lo contrario, renderiza un submenú (abierto o cerrado)
   return (
     <li className={styles.item}>
-      <SidebarSubMenu label={label} subItems={subItems} />
+      <SidebarSubMenu
+        label={label}
+        subItems={subItems}
+        isOpen={isOpen}
+        onToggle={onToggle}
+      />
     </li>
   );
 }
