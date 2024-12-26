@@ -1,36 +1,39 @@
-/* DocumentationLayout.module.css */
+/* src/app/documentation/components/DocumentationLayout.module.css */
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #111111; /* Fondo total oscuro */
-  }
-  
-  .center {
-    width: 90%;
-    max-width: 87rem;
-    margin: 0 auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .mainContainer {
-    display: flex;
-    flex: 1;
-    width: 100%;
-  }
-  
-  .content {
-    flex: 1;
-    padding: 2rem;
-    box-sizing: border-box;
-  
-    /* Si quieres texto blanco */
-    color: #ffffff;
-  
-    /* Mismo fondo para no romper el dark mode */
-    background-color: #111111;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #111111; /* Fondo total oscuro */
+}
+
+.center {
+  width: 90%;
+  max-width: 87rem;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContainer {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  /* Texto blanco */
+  color: #ffffff;
+
+  /* Mismo fondo para no romper el dark mode */
+  background-color: #111111;
+
+  /* Ajusta tamaño de fuente si lo deseas mayor */
+  font-size: 1rem;
+  line-height: 1.6;
+}

@@ -1,10 +1,7 @@
 /* src/app/documentation/components/DocumentationSidebar.module.css */
 
-/***********************************
-   ESTRUCTURA BÁSICA SIDEBAR
-************************************/
 .sidebar {
-  background-color: #111111;
+  background-color: #111111; /* Fondo oscuro */
   color: #e0e0e0;
   min-width: 240px;
   max-width: 280px;
@@ -18,7 +15,7 @@
   height: 100%;
 }
 
-/* Lista principal */
+/* Lista */
 .menu {
   list-style: none;
   margin: 0;
@@ -26,9 +23,9 @@
   font-size: 0.95rem;
 }
 
-/* Encabezado de sección (opcional) */
+/* Título de sección */
 .sectionHeading {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -36,105 +33,30 @@
   letter-spacing: 0.5px;
 }
 
-/***********************************
-   LINKS DIRECTOS
-************************************/
+/* LINKS DIRECTOS -> color base #777777 */
 .navLink {
   display: block;
   text-decoration: none;
-  color: #d4d4d4;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  transition: background-color 0.3s, color 0.3s;
+  color: #777777; 
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
 }
+
 .navLink:hover {
   color: #ffffff;
-  background-color: #222222;
+  background-color: #1a1a1a;
 }
 
-/***********************************
-   SUBMENÚ COLAPSABLE (JS-based)
-************************************/
-/* contenedor de la sección colapsable */
-.collapseSection {
-  margin-bottom: 1rem;
+/* Activo -> texto celeste + fondo gris azulado */
+.navLink.active {
+  color: #00bfff;
+  background-color: #1a2b36;
 }
 
-/* Botón que togglea el submenú */
-.collapse__link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0.6rem;
-  border-radius: 6px;
-  background-color: #1b1b1b; 
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-bottom: 0.2rem;
-}
-.collapse__link:hover {
-  background-color: #222222;
-}
-
-/* Título + ícono flecha */
-.collapse__title {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #e0e0e0;
-}
-.collapse__icon {
-  color: #e0e0e0;
-  font-size: 0.9rem;
-  transition: transform 0.4s;
-}
-
-/* Cuando "isOpen === true", rotamos flecha */
-.rotate .collapse__icon {
-  transform: rotate(180deg);
-}
-
-/* Contenedor del submenú */
-.collapse__menu {
-  display: none; /* por defecto, oculto */
-  padding: 0.3rem 1.2rem;
-
-  /* Animación de "aparición" suave */
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-5px);
-  overflow: hidden;
-  transition: 
-    max-height 0.4s ease, 
-    opacity 0.4s ease, 
-    transform 0.4s ease;
-}
-
-/* Al estar abierto (isOpen === true), mostramos + animamos */
-.showCollapse {
-  display: block; 
-  max-height: 500px; /* ajusta si tienes muchos elementos */
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Enlaces dentro del submenú */
-.collapse__sublink {
-  display: block;
-  padding: 0.3rem 0;
-  font-size: 0.85rem;
-  color: #B6CEFC; /* sub-color */
-  transition: color 0.3s;
-}
-.collapse__sublink:hover {
-  color: #ffffff;
-}
-
-/***********************************
-   RESPONSIVE
-************************************/
+/* Responsive <768px */
 @media (max-width: 768px) {
   .sidebar {
-    display: none; /* O un approach con hamburguesa */
+    display: none;
   }
 }

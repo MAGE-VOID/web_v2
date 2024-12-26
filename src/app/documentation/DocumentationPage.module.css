@@ -8,13 +8,12 @@
 
 .mainContainer {
   display: flex;
-  flex: 1; /* Para tomar el espacio restante entre header y footer */
+  flex: 1;
 }
 
-/* El contenido principal a la derecha */
 .content {
   flex: 1;
   padding: 2rem;
   box-sizing: border-box;
-  background-color: #111111; /* Si quieres un fondo distinto */
+  background-color: #111111;
 }

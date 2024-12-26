@@ -42,7 +42,7 @@ def procesar_archivos(ruta_base):
 
     try:
         pyperclip.copy(contenido_total)
-        print("Contenido copiado al portapapeles (usando pyperclip).")
+        print("Ese es todo el Contenido.")
     except pyperclip.PyperclipException:
         try:
             import subprocess
