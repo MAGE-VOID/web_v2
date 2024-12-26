@@ -1,4 +1,3 @@
-// src/app/documentation/components/DocumentationSidebar.tsx
 "use client";
 
 import React from "react";
