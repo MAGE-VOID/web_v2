@@ -4,7 +4,7 @@
 import React from "react";
 import Footer from "../../../components/Footer/Footer";
 import Header from "../../../components/HeaderModule/Header";
-import DocumentationSidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import styles from "./DocumentationLayout.module.css";
 
 interface DocumentationLayoutProps {
@@ -19,7 +19,7 @@ export default function DocumentationLayout({ children }: DocumentationLayoutPro
       {/* Contenedor que aplica el centrado (similar a .justify del Header) */}
       <div className={styles.center}>
         <div className={styles.mainContainer}>
-          <DocumentationSidebar />
+          <Sidebar />
           <main className={styles.content}>
             {children}
           </main>

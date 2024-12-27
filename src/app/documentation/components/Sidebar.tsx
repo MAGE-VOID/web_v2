@@ -1,40 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "./Sidebar.module.css";
-import SidebarItem, { SidebarItemProps } from "./Sidebar/SidebarItem";
+import styles from "./Sidebar/Sidebar.module.css";
+import SidebarItem from "./Sidebar/SidebarItem";
 
-/** 
- * Definimos la estructura de cada ítem de menú
- */
-const menuData: SidebarItemProps[] = [
-  {
-    label: "Introduction",
-    href: "/documentation/introduction",
-  },
-  {
-    label: "Guide",
-    subItems: [
-      { label: "Getting Started", href: "/documentation/guide/getting-started" },
-      { label: "Advanced", href: "/documentation/guide/advanced" },
-    ],
-  },
-  {
-    label: "Themes",
-    subItems: [
-      { label: "Docs Theme", href: "/documentation/docs-theme" },
-      { label: "Blog Theme", href: "/documentation/blog-theme" },
-    ],
-  },
-  {
-    label: "More",
-    subItems: [
-      { label: "About Nextra", href: "/documentation/about-nextra" },
-    ],
-  },
-];
+/*
+ Definimos la estructura de cada ítem de menú
+*/
+import { menuData } from "./Sidebar/SidebarData";
 
-export default function DocumentationSidebar() {
+
+export default function Sidebar() {
   // Objeto: { [label_menu]: boolean }
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({});
   const [isLoading, setIsLoading] = useState(true);
@@ -69,8 +45,8 @@ export default function DocumentationSidebar() {
       <aside
         className={styles.sidebar}
         style={{
-          visibility: "hidden",  
-          pointerEvents: "none", 
+          visibility: "hidden",
+          pointerEvents: "none",
         }}
       />
     );
