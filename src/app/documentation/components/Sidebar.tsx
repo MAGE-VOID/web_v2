@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "./DocumentationSidebar.module.css";
-import SidebarItem, { SidebarItemProps } from "./SidebarItem";
+import styles from "./Sidebar.module.css";
+import SidebarItem, { SidebarItemProps } from "./Sidebar/SidebarItem";
 
 /** 
  * Definimos la estructura de cada ítem de menú

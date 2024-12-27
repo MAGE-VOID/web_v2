@@ -4,7 +4,7 @@
 import React from "react";
 import Footer from "../../../components/Footer/Footer";
 import Header from "../../../components/HeaderModule/Header";
-import DocumentationSidebar from "./DocumentationSidebar";
+import DocumentationSidebar from "./Sidebar";
 import styles from "./DocumentationLayout.module.css";
 
 interface DocumentationLayoutProps {
