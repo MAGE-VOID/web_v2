@@ -7,7 +7,7 @@ export const menuData: SidebarItemProps[] = [
     href: "/documentation/introduction", // Enlace directo
   },
   {
-    label: "How To Start", // ← Título (no clickeable, sin subItems, sin href)
+    label: "How To Start", // ← Título
   },
   {
     label: "Table of Contents", // Submenú con items
@@ -29,10 +29,10 @@ export const menuData: SidebarItemProps[] = [
   {
     // Ejemplo de enlace directo, si lo deseas
     label: "Best Brokers",
-    href: "#", 
+    href: "#",
   },
   {
-    label: "Specifications", // ← Título (no clickeable, sin subItems, sin href)
+    label: "Specifications", // ← Título
   },
   {
     label: "Another Page", // Submenú expandible
@@ -42,7 +42,7 @@ export const menuData: SidebarItemProps[] = [
     ],
   },
   {
-    label: "More", // ← Título (no clickeable, sin subItems, sin href)
+    label: "More", // ← Título
   },
   {
     label: "Another Link Under More",
@@ -56,4 +56,3 @@ export const menuData: SidebarItemProps[] = [
     ],
   },
 ];
-
