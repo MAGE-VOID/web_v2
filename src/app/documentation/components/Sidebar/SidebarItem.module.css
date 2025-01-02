@@ -63,7 +63,13 @@
   overflow: hidden;
   height: 0;
   transition: height 0.3s ease-in-out;
+
+  border-left: 1px solid #252525;    /* La línea vertical */
+  margin-left: 1rem;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
+
 
 /* Enlaces del submenú */
 .subMenuLink {
@@ -71,7 +77,7 @@
   padding: 0.3rem 0.75rem;
   font-size: 0.85rem;
   text-decoration: none;
-  margin-left: 2rem;
+  margin-left: 0.5rem;
   margin-top: 4px;
 
   color: #777777;
