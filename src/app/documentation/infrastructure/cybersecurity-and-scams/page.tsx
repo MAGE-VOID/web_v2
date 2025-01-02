@@ -1,5 +1,5 @@
 import React from "react";
-import DocumentationLayout from "../components/DocumentationLayout";
+import DocumentationLayout from "../../components/DocumentationLayout";
 // Ajusta la ruta relativa al componente Layout si es necesario
 
 export default function IntroductionPage() {

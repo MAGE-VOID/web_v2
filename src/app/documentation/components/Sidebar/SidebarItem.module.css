@@ -1,5 +1,6 @@
-/* src/app/documentation/components/SidebarItem.module.css */
+/* SidebarItem.module.css */
 
+/* Ya existente */
 .item {
   list-style: none;
   margin-bottom: 0.5rem;
@@ -9,7 +10,6 @@
 .directLink {
   display: block;
   text-decoration: none;
-  /* Color base -> #777777 */
   color: #777777;
   padding: 0.4rem 0.6rem;
   border-radius: 4px;
@@ -35,12 +35,12 @@
   padding: 0.4rem 0.6rem;
   border-radius: 4px;
 
-  /* Fondo transparente, texto gris medio */
   background-color: transparent;
   color: #777777;
 
   transition: background-color 0.2s, color 0.2s;
 }
+
 .collapseHeader:hover {
   color: #ffffff;
   background-color: #1a1a1a;
@@ -51,11 +51,11 @@
   color: #777777;
   width: 1em;
   height: 1em;
-  transform: rotate(0deg); /* Apunta a la derecha */
+  transform: rotate(0deg);
 }
 
 .iconOpen {
-  transform: rotate(90deg); /* Gira 90° -> apunta hacia abajo */
+  transform: rotate(90deg);
 }
 
 /* Contenedor del submenú */
@@ -68,13 +68,12 @@
 /* Enlaces del submenú */
 .subMenuLink {
   display: block;
-  padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0.75rem;
   font-size: 0.85rem;
   text-decoration: none;
   margin-left: 2rem;
   margin-top: 4px;
 
-  /* Color base => #777777 */
   color: #777777;
   border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;
@@ -85,8 +84,19 @@
   background-color: #1a1a1a;
 }
 
-/* Estado activo submenú */
 .subMenuLink.active {
   color: #00bfff;
   background-color: #1a2b36;
+}
+
+/* NUEVO: Título en blanco y negrita, sin hover ni cursor pointer */
+.titleHeader {
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0.4rem 0.6rem;
+  cursor: default; /* Para que no sea 'manito' */
+}
+.titleHeader:hover {
+  background-color: transparent;
+  color: #ffffff; /* se mantiene en blanco */
 }

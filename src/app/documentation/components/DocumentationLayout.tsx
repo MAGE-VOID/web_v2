@@ -7,22 +7,24 @@ import Header from "../../../components/HeaderModule/Header";
 import Sidebar from "./Sidebar";
 import styles from "./DocumentationLayout.module.css";
 
+// 1) IMPORTAMOS LA FUENTE 'INTER' (misma que usa Nextra)
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+
 interface DocumentationLayoutProps {
   children: React.ReactNode;
 }
 
 export default function DocumentationLayout({ children }: DocumentationLayoutProps) {
   return (
-    <div className={styles.wrapper}>
+    // 2) Envolvemos todo con una <div> que use inter.className
+    <div className={`${styles.wrapper} ${inter.className}`}>
       <Header />
 
-      {/* Contenedor que aplica el centrado (similar a .justify del Header) */}
       <div className={styles.center}>
         <div className={styles.mainContainer}>
           <Sidebar />
-          <main className={styles.content}>
-            {children}
-          </main>
+          <main className={styles.content}>{children}</main>
         </div>
       </div>
 

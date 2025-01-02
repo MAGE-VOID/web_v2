@@ -7,6 +7,7 @@ export interface SidebarItemProps {
   label: string;
   href?: string;
   subItems?: SidebarItemProps[];
+  isTitle?: boolean; // <-- NUEVO: marca si es solo título
 }
 
 interface SidebarItemControlledProps {
@@ -20,9 +21,21 @@ export default function SidebarItem({
   isOpen,
   onToggle,
 }: SidebarItemControlledProps) {
-  const { label, href, subItems } = item;
+  const { label, href, subItems, isTitle } = item;
 
-  // Si NO tiene subItems, es un link simple
+  // 1) Si es un TÍTULO (no tiene href ni subItems, o no quieres submenú)
+  //    Renderiza un <div> especial (blanco, negrita, sin hover).
+  //    * Si quieres que al hacer clic no haga nada, ni expanda menú, 
+  //      lo dejamos como un div sin onClick.
+  if (isTitle) {
+    return (
+      <li className={styles.item}>
+        <div className={styles.titleHeader}>{label}</div>
+      </li>
+    );
+  }
+
+  // 2) Si NO tiene subItems => es un link simple
   if (!subItems || subItems.length === 0) {
     return (
       <li className={styles.item}>
@@ -31,7 +44,7 @@ export default function SidebarItem({
     );
   }
 
-  // De lo contrario, renderiza un submenú (abierto o cerrado)
+  // 3) De lo contrario, es un submenú expandible
   return (
     <li className={styles.item}>
       <SidebarSubMenu

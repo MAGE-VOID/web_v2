@@ -1,58 +1,69 @@
 // src/app/documentation/components/Sidebar/SidebarData.ts
-import { SidebarItemProps } from "./SidebarItem";
 
-export const menuData: SidebarItemProps[] = [
+export const menuData = [
+  // PÁGINA individual => /documentation/introduction
   {
     label: "Introduction",
-    href: "/documentation/introduction", // Enlace directo
+    href: "/documentation/introduction",
   },
+
+  // TÍTULO => no clickeable, negrita/blanco
   {
-    label: "How To Start", // ← Título
+    label: "How To Start",
+    isTitle: true,
   },
+
+  // SUBMENÚ => /documentation/table-of-contents
   {
-    label: "Table of Contents", // Submenú con items
+    label: "Table of Contents",
     subItems: [
-      { label: "What is Forex", href: "#" },
-      { label: "Algorithmic Trading", href: "#" },
-      { label: "Getting Started", href: "#" },
-      { label: "Platforms", href: "#" },
-      { label: "Resources", href: "#" },
+      { label: "What is Forex", href: "/documentation/table-of-contents/what-is-forex" },
+      { label: "Algorithmic Trading", href: "/documentation/table-of-contents/algorithmic-trading" },
+      { label: "Getting Started", href: "/documentation/table-of-contents/getting-started" },
+      { label: "Platforms", href: "/documentation/table-of-contents/platforms" },
+      { label: "Resources", href: "/documentation/table-of-contents/resources" },
     ],
   },
+
+  // SUBMENÚ => /documentation/infrastructure
   {
     label: "Infrastructure",
     subItems: [
-      { label: "Virtual Private Server", href: "#" },
-      { label: "Cybersecurity and Scams", href: "#" },
+      { label: "Virtual Private Server", href: "/documentation/infrastructure/virtual-private-server" },
+      { label: "Cybersecurity and Scams", href: "/documentation/infrastructure/cybersecurity-and-scams" },
     ],
   },
+
+  // PÁGINA individual => /documentation/best-brokers
   {
-    // Ejemplo de enlace directo, si lo deseas
     label: "Best Brokers",
-    href: "#",
+    href: "/documentation/best-brokers",
   },
+
+  // TÍTULO => no clickeable
   {
-    label: "Specifications", // ← Título
+    label: "More",
+    isTitle: true,
   },
+
+  // PÁGINA individual => /documentation/about-us
   {
-    label: "Another Page", // Submenú expandible
+    label: "About Us",
+    href: "/documentation/about-us",
+  },
+
+  // SUBMENÚ => /documentation/assistance-and-policies
+  {
+    label: "Assistance and Policies",
     subItems: [
-      { label: "Some Detail", href: "#" },
-      { label: "Another Detail", href: "#" },
+      { label: "Help Center", href: "/documentation/assistance-and-policies/help-center" },
+      { label: "Terms and Conditions", href: "/documentation/assistance-and-policies/terms-and-conditions" },
     ],
   },
+
+  // PÁGINA individual => /documentation/contact
   {
-    label: "More", // ← Título
-  },
-  {
-    label: "Another Link Under More",
-    href: "#",
-  },
-  {
-    label: "Some Expandable Stuff",
-    subItems: [
-      { label: "Help Center", href: "#" },
-      { label: "Terms and Conditions", href: "#" },
-    ],
+    label: "Contact ↗",
+    href: "/documentation/contact",
   },
 ];
