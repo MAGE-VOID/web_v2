@@ -1,0 +1,80 @@
+/* FAQBox.module.css */
+
+/* Contenedor principal del FAQBox */
+.faqBox {
+  margin-top: 1.75rem; /* ~ tailwind mt-7 */
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  background-color: #f8f8f8; /* ~ neutral-50 */
+  transition: background-color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .faqBox {
+    background-color: #2a2a2a; /* ~ neutral-800 */
+  }
+}
+
+/* Si quieres un efecto al 'abrir' y 'cerrar', 
+   podrías cambiar el color de fondo o algún otro estilo
+   cuando está "open".
+ */
+.open {
+  background-color: #f2f2f2; /* un ligero cambio al abrir, opcional */
+}
+
+@media (prefers-color-scheme: dark) {
+  .open {
+    background-color: #333; /* en dark mode */
+  }
+}
+
+/* summary (ahora un <button>) */
+.summary {
+  cursor: pointer;
+  background: transparent;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  outline: none;
+  transition: color 0.2s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .summary {
+    color: #ddd;
+  }
+}
+
+.summary:hover {
+  color: #000;
+}
+
+/* Título strong */
+.title {
+  font-size: 1.125rem; /* ~ tailwind text-lg */
+  margin-left: 0.5rem;
+}
+
+/* Contenedor del contenido */
+.content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  /* .35s para que se vea más suave */
+  color: #333;
+  font-size: 0.95rem;
+  padding: 0rem; /* Espacio entre la pregunta y la respuesta */
+}
+
+@media (prefers-color-scheme: dark) {
+  .content {
+    color: #ccc;
+  }
+}

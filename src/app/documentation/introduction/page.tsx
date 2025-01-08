@@ -6,7 +6,9 @@ import ContentLayout from "@/app/documentation/components/Content/ui/ContentLayo
 import Title from "@/app/documentation/components/Content/ui/Title";
 import Subtitle from "@/app/documentation/components/Content/ui/Subtitle";
 import Paragraph from "@/app/documentation/components/Content/ui/Paragraph";
-// Si quisieras componentes <List> y <ListItem>, los podrías crear también.
+
+// Importamos FAQItem
+import FAQBox from "@/app/documentation/components/Content/ui/FAQBox";
 
 export default function IntroductionPage() {
   return (
@@ -24,10 +26,10 @@ export default function IntroductionPage() {
           clients.
         </Paragraph>
         <Paragraph>
-          Led by a specialist in algorithmic trading, our team applies
-          extensive programming and financial modeling skills to develop and
-          implement effective trading systems that bridge the gap between
-          theory and market reality.
+          Led by a specialist in algorithmic trading, our team applies extensive
+          programming and financial modeling skills to develop and implement
+          effective trading systems that bridge the gap between theory and
+          market reality.
         </Paragraph>
       </div>
 
@@ -60,13 +62,27 @@ export default function IntroductionPage() {
         </Paragraph>
       </div>
 
-      {/* Bloque 5 */}
+      {/* Bloque 5: Preguntas expandibles */}
       <div>
-        <ul>
-          <li>What platforms does Investors Logics use?</li>
-          <li>How can I start trading with Investors Logics?</li>
-          <li>Does Investors Logics offer customized trading solutions?</li>
-        </ul>
+        <FAQBox title="What platforms does Investors Logics use?">
+          Investors Logics utilizes a variety of platforms including MT5, ONNX,
+          Python, OpenAI, TensorFlow, and PyTorch. This allows us to provide
+          tailored trading strategies and technologies that meet specific client
+          needs.
+        </FAQBox>
+
+        <FAQBox title="How can I start trading with Investors Logics?">
+          Begin by exploring our Documentation section. Here, you will find all
+          necessary information on setting up your trading systems and
+          understanding the algorithms we use. For specific inquiries, please
+          contact our support.
+        </FAQBox>
+
+        <FAQBox title="Does Investors Logics offer customized trading solutions?">
+          Yes, our platform is built to accommodate customizations. We
+          understand that each trader needs are unique, and our technology is
+          designed to adapt to individual preferences and market conditions.
+        </FAQBox>
       </div>
     </ContentLayout>
   );
