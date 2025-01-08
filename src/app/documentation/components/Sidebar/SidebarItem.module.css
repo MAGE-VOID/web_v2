@@ -13,7 +13,7 @@
   color: #777777;
   padding: 0.4rem 0.6rem;
   border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .directLink:hover {
@@ -24,6 +24,7 @@
 .directLink.active {
   color: #00bfff;
   background-color: #1a2b36;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Cabecera del submenú */
@@ -38,7 +39,7 @@
   background-color: transparent;
   color: #777777;
 
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .collapseHeader:hover {
@@ -82,7 +83,7 @@
 
   color: #777777;
   border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .subMenuLink:hover {
@@ -93,6 +94,7 @@
 .subMenuLink.active {
   color: #00bfff;
   background-color: #1a2b36;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* NUEVO: Título en blanco y negrita, sin hover ni cursor pointer */

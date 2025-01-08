@@ -39,7 +39,7 @@
   color: #777777; 
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .navLink:hover {
@@ -51,6 +51,7 @@
 .navLink.active {
   color: #00bfff;
   background-color: #1a2b36;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 /* Responsive <768px */
