@@ -1,0 +1,20 @@
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 1rem;
+  }
+  
+  .prefix {
+    font-weight: 500;
+  }
+  
+  .separator {
+    margin: 0 0.3rem;
+    color: #666;
+  }
+  
+  .current {
+    font-weight: 600;
+    color: #fff;
+  }
+  
