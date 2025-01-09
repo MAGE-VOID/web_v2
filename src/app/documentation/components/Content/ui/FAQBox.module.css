@@ -91,6 +91,7 @@
   font-size: 0.95rem;
   line-height: 1.5;
   padding-top: 0.5rem;   /* Este es el “espacio superior” */
+  margin-left: 1.5rem; 
 }
 
 @media (prefers-color-scheme: dark) {
