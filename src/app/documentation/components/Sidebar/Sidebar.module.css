@@ -5,7 +5,8 @@
   color: #e0e0e0;
   min-width: 240px;
   max-width: 280px;
-  padding: 1rem;
+  padding: 0rem;
+  margin-top: 1rem;
   font-family: inherit;
 }
 

@@ -1,39 +1,35 @@
 /* FAQBox.module.css */
 
-/* Contenedor principal del FAQBox */
+/* Contenedor principal */
 .faqBox {
-  margin-top: 1.75rem; /* ~ tailwind mt-7 */
+  margin-top: 1.75rem;
   border-radius: 0.5rem;
   padding: 0.8rem;
-  background-color: #f8f8f8; /* ~ neutral-50 */
+  background-color: #f8f8f8;
   transition: background-color 0.3s ease;
 }
 
 @media (prefers-color-scheme: dark) {
   .faqBox {
-    background-color: #2a2a2a; /* ~ neutral-800 */
+    background-color: #2a2a2a;
   }
 }
 
-/* Si quieres un efecto al 'abrir' y 'cerrar', 
-   podrías cambiar el color de fondo o algún otro estilo
-   cuando está "open".
- */
+/* Cuando está abierto, si quieres cambiar color */
 .open {
-  background-color: #f2f2f2; /* un ligero cambio al abrir, opcional */
+  background-color: #f2f2f2;
 }
-
 @media (prefers-color-scheme: dark) {
   .open {
-    background-color: #333; /* en dark mode */
+    background-color: #333;
   }
 }
 
-/* summary (ahora un <button>) */
-.summary {
+/* Botón/encabezado */
+.header {
   cursor: pointer;
   background: transparent;
-  color: #111;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -42,39 +38,63 @@
   text-align: left;
   width: 100%;
   outline: none;
-  transition: color 0.2s ease;
+  display: flex;      
+  align-items: center;
+  gap: 0.5rem;
 }
 
+/* Flecha */
+.arrowIcon {
+  transition: transform 0.3s ease;
+  color: #ffffff; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconOpen {
+  transform: rotate(90deg); 
+}
+
+/* Título / Subtítulo */
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-size: 1.125rem;
+  margin: 0;
+  font-weight: 600;
+}
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 400;
+}
 @media (prefers-color-scheme: dark) {
-  .summary {
-    color: #ddd;
+  .subtitle {
+    color: #aaa;
   }
 }
 
-.summary:hover {
-  color: #000;
-}
-
-/* Título strong */
-.title {
-  font-size: 1.125rem; /* ~ tailwind text-lg */
-  margin-left: 0.5rem;
-}
-
-/* Contenedor del contenido */
+/* Contenedor que animamos */
 .content {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.35s ease, opacity 0.35s ease;
-  /* .35s para que se vea más suave */
+}
+
+/* Contenedor interno con padding-top */
+.contentInner {
   color: #333;
   font-size: 0.95rem;
-  padding: 0rem; /* Espacio entre la pregunta y la respuesta */
+  line-height: 1.5;
+  padding-top: 0.5rem;   /* Este es el “espacio superior” */
 }
 
 @media (prefers-color-scheme: dark) {
-  .content {
+  .contentInner {
     color: #ccc;
   }
 }
